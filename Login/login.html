@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        
+        :root {
+            --bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+    --bg-carolina-blue: hsla(199, 89%, 49%, 1);
+    --bg-prussian-blue: hsla(216, 33%, 20%, 1);
+    --bg-oxford-blue: hsla(222, 44%, 13%, 1);
+    --bg-oxford-blue-2: hsla(222, 47%, 11%, 1);
+    /** Text colors */
+    --text-white: hsla(0, 0%, 100%, 1);
+    --text-alice-blue: hsla(216, 100%, 95%, 1);
+    --text-columbia-blue: hsla(199, 69%, 84%, 1);
+    --text-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+    --text-carolina-blue: hsla(199, 89%, 49%, 1);
+    --text-shadow-blue: hsla(217, 24%, 59%, 1);
+    --text-slate-gray: hsla(217, 17%, 48%, 1);
+    /** Gradient colors */
+    --gradient-1: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%);
+    --gradient-2: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea);
+    --gradient-3: linear-gradient(0deg, #000d1a, transparent);
+    /** Border colors */
+    --border-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+    --border-prussian-blue: hsla(216, 33%, 20%, 1);
+    --border-white: hsl(0, 0%, 100%);
+    --border-white-alpha-15: hsla(0, 0%, 100%, 0.15);
+    /** Default colors */
+    --white: hsl(0, 0%, 100%, 1);
+    --black: hsl(0, 0%, 0%, 1);
+    /**
+   * TYPOGRAPHY
+   */
+    /** Font family */
+    --fontFamily-noto_sans: 'Noto Sans', sans-serif;
+    /** Font size */
+    --fontSize-1: 2.9rem;
+    --fontSize-2: 2.0rem;
+    --fontSize-3: 1.8rem;
+    --fontSize-4: 1.6rem;
+    --fontSize-5: 1.5rem;
+    --fontSize-6: 1.4rem;
+    --fontSize-7: 1.2rem;
+    --fontSize-8: 1.3rem;
+    /** Font weight */
+    --weight-medium: 500;
+    --weight-semiBold: 600;
+    --weight-bold: 700;
+    --weight-extraBold: 800;
+    /** Line height */
+    --lineHeight-1: 1.3;
+    --lineHeight-2: 1.5;
+    --lineHeight-4: 1.5;
+    /**
+   * BOX SHADOW
+   */
+    --shadow-1: 0 8px 20px 0 hsla(0, 0%, 0%, 0.05);
+    --shadow-2: 0px 3px 20px hsla(180, 90%, 43%, 0.2);
+    /**
+   * BORDER RADIUS
+   */
+    --radius-6: 6px;
+    --radius-8: 8px;
+    --radius-16: 16px;
+    --radius-48: 48px;
+    --radius-circle: 50%;
+    --radius-pill: 200px;
+    /**
+   * SPACING
+   */
+    --section-padding: 70px;
+    /**
+   * TRANSITION
+   */
+    --transition-1: 0.25s ease;
+    --transition-2: 0.5s ease;
+    --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+    --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
+}
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-color);
+        }
+
+        ::selection {
+            color: #fff;
+            background: #53f0e3;
+        }
+
+        .wrapper {
+            width: var(--form-width);
+            padding: var(--form-padding);
+            background: #fff;
+            border-radius: var(--form-border-radius);
+            text-align: center;
+            box-shadow: var(--form-box-shadow);
+        }
+
+        .wrapper header {
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .wrapper form {
+            margin: 40px 0;
+        }
+
+        form .field {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        form .field.shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                margin-left: 0px;
+            }
+            20%,
+            80% {
+                margin-left: -12px;
+            }
+            40%,
+            60% {
+                margin-left: 12px;
+            }
+        }
+
+        form .field .input-area {
+            height: 50px;
+            width: 100%;
+            position: relative;
+        }
+
+        form input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            padding: var(--input-padding);
+            font-size: var(--input-font-size);
+            background: none;
+            caret-color: var(--button-bg-color);
+            border-radius: 5px;
+            border: 1px solid #bfbfbf;
+            border-bottom-width: 2px;
+            transition: all 0.2s ease;
+        }
+
+        form .field input:focus,
+        form .field.valid input {
+            border-color: var(--button-bg-color);
+        }
+
+        form .field.shake input,
+        form .field.error input {
+            border-color: #dc3545;
+        }
+
+        .field .input-area i {
+            position: absolute;
+            top: 50%;
+            font-size: 18px;
+            pointer-events: none;
+            transform: translateY(-50%);
+        }
+
+        .input-area .icon {
+            left: 15px;
+            color: #bfbfbf;
+            transition: color 0.2s ease;
+        }
+
+        .input-area .error-icon {
+            right: 15px;
+            color: #dc3545;
+        }
+
+        form input:focus~.icon,
+        form .field.valid .icon {
+            color: var(--button-bg-color);
+        }
+
+        form .field.shake input:focus~.icon,
+        form .field.error input:focus~.icon {
+            color: #bfbfbf;
+        }
+
+        form input::placeholder {
+            color: #bfbfbf;
+            font-size: 17px;
+        }
+
+        form .field .error-txt {
+            color: #dc3545;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        form .field .error {
+            display: none;
+        }
+
+        form .field.shake .error,
+        form .field.error .error {
+            display: block;
+        }
+
+        form .pass-txt {
+            text-align: left;
+            margin-top: -10px;
+        }
+
+        .wrapper a {
+            color: var(--button-bg-color);
+            text-decoration: none;
+        }
+
+        .wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        form input[type="submit"] {
+            height: 50px;
+            margin-top: 30px;
+            color: #fff;
+            padding: var(--button-padding);
+            border: none;
+            background: var(--button-bg-color);
+            cursor: pointer;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background: var(--button-hover-bg-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>Login Form</header>
+        <form action="#">
+            <div class="field email">
+                <div class="input-area">
+                    <input type="text" placeholder="Email Address">
+                    <i class="icon fas fa-envelope"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Email can't be blank</div>
+            </div>
+            <div class="field password">
+                <div class="input-area">
+                    <input type="password" placeholder="Password">
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Password can't be blank</div>
+            </div>
+            <div class="pass-txt"><a href="#">Forgot password?</a></div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+    </div>
+
+    <script>
+        const form = document.querySelector("form");
+        eField = form.querySelector(".email"),
+            eInput = eField.querySelector("input"),
+            pField = form.querySelector(".password"),
+            pInput = pField.querySelector("input");
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+
+            (eInput.value == "") ? eField.classList.add("shake", "error"): checkEmail();
+            (pInput.value == "") ? pField.classList.add("shake", "error"): checkPass();
+
+            setTimeout(() => {
+                eField.classList.remove("shake");
+                pField.classList.remove("shake");
+            }, 500);
+
+            eInput.onkeyup = () => { checkEmail(); }
+            pInput.onkeyup = () => { checkPass(); }
+
+            function checkEmail() {
+                let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (!eInput.value.match(pattern)) {
+                    eField.classList.add("error");
+                    eField.classList.remove("valid");
+                    let errorTxt = eField.querySelector(".error-txt");
+
+                    (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address": errorTxt.innerText = "Email can't be blank";
+                } else {
+                    eField.classList.remove("error");
+                    eField.classList.add("valid");
+                }
+            }
+
+            function checkPass() {
+                if (pInput.value == "") {
+                    pField.classList.add("error");
+                    pField.classList.remove("valid");
+                } else {
+                    pField.classList.remove("error");
+                    pField.classList.add("valid");
+                }
+            }
+
+            if (!eField.classList.contains("error") && !pField.classList.contains("error")) {
+                window.location.href = form.getAttribute("action");
+            }
+        }
+    </script>
+</body>
+
+</html>
